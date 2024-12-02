@@ -8,7 +8,7 @@ fn main()
 
     let file_path = &args[1];
 
-    println!("Test filepath output: {file_path}");
+    println!("File Path: {file_path}");
 
     let file_content = fs::read_to_string(file_path).expect("Error, could not read file");
     
@@ -16,9 +16,11 @@ fn main()
     // forth between lists and vectors :?
     let numbers: Vec<&str>  = file_content.split_whitespace().collect();
     
-    let mut list1: Vec<i32> = Vec::with_capacity(0);
+    // different versions
+    let mut list1: Vec<i32> = [].to_vec();
     let mut list2: Vec<i32> = Vec::with_capacity(0);
     let mut map2: HashMap<i32, i32> =  HashMap::new();
+
 
     for pair in numbers.chunks(2)
     {
